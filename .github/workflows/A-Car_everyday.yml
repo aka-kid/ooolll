@@ -15,10 +15,10 @@ jobs:
        with:
          python-version: 3.7
        
-     - name: '运行提示'#显示的名字，随意
+     - name: '运行22提示'#显示的名字，随意
        run: pip install -r ./Xxx/库.TXT#调用的支持库
        
-     - name: '运行提示' #随意
+     - name: '658运行提示' #随意
        run: python3 Car_everyday.py#你的py代码在github的路径
        env:
            Card_telegram: ${{ secrets.Card_telegram }}#py通知参数
