@@ -19,7 +19,7 @@ jobs:
        run: pip install -r ./Xxx/库.TXT#调用的支持库
        
      - name: '658运行提示' #随意
-       run: python3 618.py#你的py代码在github的路径
+       run: python3 ooolll/618.py#你的py代码在github的路径
        env:
            Card_telegram: ${{ secrets.Card_telegram }}#py通知参数
            Car_cookies: ${{ secrets.Car_cookies }}  #你的py代码中ck
