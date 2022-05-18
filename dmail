@@ -1,0 +1,32 @@
+# -*- encoding: utf-8 -*-
+'''
+@File    :   demo1.py
+@Time    :   2020/02/26 15:57:31
+@Desc    :   
+'''
+import requests
+
+
+def main():
+    rs = requests.get("https://sign-in.dmall.com/checkIn",
+                      headers={
+                          "Accept": "*/*",
+                          "Accept-Language": "zh-cn",
+                          "Host": "appapis.dmall.com",
+                          "Referer": "https://act.dmall.com/dac/signIn/index.html?dmShowTitleBar=false&dmfrom=wx&bounces=false&dmTransStatusBar=true",
+                          "User-Agent": "Mozilla/5.0 (iPod touch; CPU iPhone OS 13_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148Dmall/4.4.7"
+                      },
+                      cookies={
+track_id=C9D3FFCC4150000240D714428AE49460; web_session_count=91; _utm_id=441058762; addr=%E5%8C%97%E4%BA%AC%E5%B8%82%E4%B8%B0%E5%8F%B0%E5%8C%BA%E8%A5%BF%E7%BD%97%E5%9B%AD%E7%AC%AC%E4%BA%8C%E7%A4%BE%E5%8C%BA; addrId=206711141896; appMode=online; appVersion=5.3.4; areaId=110106; businessCode=27361; community=%E8%A5%BF%E7%BD%97%E5%9B%AD%E7%AC%AC%E4%BA%8C%E7%A4%BE%E5%8C%BA; dmTenantId=1; env=app; first_session_time=26170; lat=39.858811; lng=116.392559; originBusinessFormat=2-4-8-1; platform=IOS; platformStoreGroup=; platformStoreGroupKey=96e60f2ca4954b8e578c7e3eccd6735b@NTgzNjEtNTIzNjgx; recommend=1; risk=0; session_count=293; session_id=066656817C6C462B8F71D81DF56D8847; storeGroupKey=9282035142684b1948ba71fb15b38f33@MS0xMzA0NC0x; storeId=13044; store_id=13044; tdc=26.17.0.104-2503537-2478771.1629874374311; tempid=6461791baf0b09f0f9230b69068a31da; ticketName=48C6D22978718302611E3158AAE65208A17F40B08D451F3D7112E1C867837F7E37BA2DD2596DA9C289727A587060BD3CB8F5C6657D6258DA5AE823459E6FED782AF6EA628D7EADF16CDD77F426235378D5635B5401AF287E1C27AAC069A1FB206175F77CC709BF1B1917E87B513BD3348AC9859A6FA43925226D673C9644F433; token=9771a739-114a-43aa-9f03-1b2158168740; userId=146041896; uuid=b180db9d6987c0e1281471539b5f3fb3dfb58cb5; venderId=1; vender_id=1; webViewType=wkwebview; console_mode=0; inited=true; apiVersion=5.3.4; appName=com.dmall.dmall; channelId=APPSTORE; cid=141fe1da9e1aacdc161; currentTime=1652879370460; deliveryLat=39.858811; deliveryLng=116.392559; dev_type=iPhone; device=iPhone13%2C2; isOpenNotification=0; networkType=2; screen=844*390; sessionId=066656817C6C462B8F71D81DF56D8847; smartLoading=1; sysVersion=14.8.1; tpc=a_90; updateTime=1652662902908; utmSource=1111.9; version=5.3.4; wifiState=1; xyz=ac; _utm_source=1111.9; grayStoreId=43
+                      },
+                      )
+    print(rs)
+    print(rs.headers)
+    print('-'*30)
+    print("Text",rs.text)
+    pass
+
+
+if __name__ == "__main__":
+    main()
+    pass
