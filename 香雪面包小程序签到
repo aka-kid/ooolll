@@ -1,0 +1,32 @@
+from email import header
+from wsgiref import headers
+import requests
+
+"""
+2022.6.4
+香雪面包小程序签到
+"""
+
+header = {
+    "AppID": "wx58a98e3fb89ab4bc",
+    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9hcGkuZnNiYXBwLmNuXC9hcGlcL3dlYXBwXC91c2VycyIsImlhdCI6MTY1NDQxODYxMiwiZXhwIjoxNjU0NTA1MDEyLCJuYmYiOjE2NTQ0MTg2MTIsImp0aSI6ImxobjlYbTNoYTBaTGdxTHUiLCJzdWIiOjExMzgzMzk0LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.kaeTw1xbuGhDBhyiIkMIf_xj0xsoZsWA1SSfMBX5ltc",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 12_4_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148"
+}
+
+# 每日签到
+url = "https://api.fsbapp.cn/api/user/signs"
+resp = requests.post(url=url, headers=header).json()
+if resp['status_code'] == 200:
+    print(f'\n签到结果:' + str(resp['message']))
+    if resp['status_code'] == 400:
+        print(f'\n签到结果:' + str(resp['message']))
+    else:
+        print(f'\n签到结果:' + str(resp['message']))
+else:
+    print(f'\n签到结果:' + str(resp['message']))
+
+# 获取积分信息
+user_url = "https://api.fsbapp.cn/api/user"
+resp2 = requests.get(url=user_url, headers=header).json()
+print(f'\n总积分：' + resp2['data']['integral'])
