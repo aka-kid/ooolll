@@ -7,14 +7,14 @@ from telethon import TelegramClient, events, sync
 import os
 
 def get_filename():
-    url = 'http://a.908654.xyz:51109/api/logs/?'
-    header = {'Authorization': 'Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiTGpUcjB4b2NvNnQtZEp5b1o0QW4tMGM5UFh4Z2pCU1dtc1FOdHZyMUo5NHZvQjAtemF1OE41dXNqSXd2aSIsImlhdCI6MTY1NTA4MzYyNywiZXhwIjoxNjU1MzQyODI3fQ.8rKiGqtZ-i7N7cXH0zgx1ifQbgF6FouasiLLXLqAJ0z2CMf08mHcg70_tYA9SxTS'}
+    url = 'http://青龙地址/api/logs/?'      # 更改青龙地址
+    header = {'Authorization': 'token'}     # 更改token
     res = requests.get(url=url,headers=header).json()
     n = 1
     while n < 100 :
         if str(res['dirs'][n]['name']) == 'passerby-b_mt_fruit_mt_fruit' :
             filename = str(res['dirs'][n]['files'][0])
-            url = f'http://a.908654.xyz:51109/api/logs/passerby-b_mt_fruit_mt_fruit/{filename}'
+            url = f'http://青龙地址/api/logs/passerby-b_mt_fruit_mt_fruit/{filename}'
             resp = requests.get(url=url,headers=header).json()
             return resp
         else:
