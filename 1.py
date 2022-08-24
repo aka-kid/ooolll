@@ -103,17 +103,17 @@ url4 = 'https://cmigucitic.cmread.com:8511/migu-cportal/book/bookcase/addSystemB
 body4 = {
     {
         "ebookId" : f"{ebookId}",
-        "chapterId" : f"{chapterId}",
+        "chapterId" : f"{chapterID}",
         "offset" : "609"
     },
     {
         "ebookId" : f"{ebookId}",
-        "chapterId" : f"{chapterId}",
+        "chapterId" : f"{chapterID}",
         "offset" : "0"
     },
     {
         "ebookId" : "591066163",
-        "chapterId" : "591066178",
+        "chapterId" : f"{chapterID}",
         "offset" : "601"
     },
 }
