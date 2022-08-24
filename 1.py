@@ -72,35 +72,35 @@ resp2 = requests.post(url=url2, headers=header, data=json.dumps(body2)).json()
 chapterID = resp2['data']['chapterID']
 print(chapterID)
 
-# # 读书细节
-# url3 = 'https://cmigucitic.cmread.com:8511/v1/interaction-facade/bookRead/putReadBookInfo'
-# body3 = {
-#   "readList" : [
-#     {
-#       "startTime" : "20220823190346",
-#       "bookId" : f'{ebookId}',
-#       "endTime" : "20220823191014",
-#       "type" : "1"
-#     },
-#     {
-#       "startTime" : "20220823185747",
-#       "bookId" : f'{ebookId}',
-#       "endTime" : "20220823185854",
-#       "type" : "1"
-#     },
-#     {
-#       "startTime" : "20220823185854",
-#       "bookId" : f'{ebookId}',
-#       "endTime" : "20220823190346",
-#       "type" : "1"
-#     }
-#   ]
-# }
-# resp3 = requests.post(url=url3, headers=header, data=json.dumps(body3)).json()
-# print(resp3)
+# 读书细节
+url3 = 'https://cmigucitic.cmread.com:8511/v1/interaction-facade/bookRead/putReadBookInfo'
+body3 = {
+  "readList" : [
+    {
+      "startTime" : "20220823190346",
+      "bookId" : f'{ebookId}',
+      "endTime" : "20220823191014",
+      "type" : "1"
+    },
+    {
+      "startTime" : "20220823185747",
+      "bookId" : f'{ebookId}',
+      "endTime" : "20220823185854",
+      "type" : "1"
+    },
+    {
+      "startTime" : "20220823185854",
+      "bookId" : f'{ebookId}',
+      "endTime" : "20220823190346",
+      "type" : "1"
+    }
+  ]
+}
+resp3 = requests.post(url=url3, headers=header, data=json.dumps(body3)).json()
+print(resp3)
 
 url4 = 'https://cmigucitic.cmread.com:8511/migu-cportal/book/bookcase/addSystemBookmark'
-body4 = {
+body4 = [
     {
         "ebookId" : f"{ebookId}",
         "chapterId" : f"{chapterID}",
@@ -116,7 +116,7 @@ body4 = {
         "chapterId" : f"{chapterID}",
         "offset" : "601"
     },
-}
+]
 resp4 = requests.post(url=url4, headers=header, data=json.dumps(body4)).json()
 print(resp4)
 
