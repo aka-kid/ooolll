@@ -1,3 +1,4 @@
+from csv import list_dialects
 import requests
 import json
 import random
@@ -40,10 +41,88 @@ body = {
     "shoppeId" : f"{shoppeId}",
     "pageIndex" : 1,
     "type" : 1,
-    "count" : 6
+    "count" : 19
 }
 
 resp = requests.post(url=url, headers=header, data=json.dumps(body)).json()
+ids = []
+names = []
 for i in resp['data']['ebookList']:
     ebookId = i['ebookId']
-    print(ebookId)
+    ebookName = i['ebookName']
+    ids.append(ebookId)
+    names.append(ebookName)
+#print(f'多个列表为：' + str(lsts))
+ebookId = random.choice(ids)
+namebookNamee = random.choice(names)
+# print(f'随机抽取书名为：' + str(ebookName) + f'，随机抽取ID为：' + str(ebookId))
+
+# url2 = 'https://cmigucitic.cmread.com:8511/migu-cportal/book/bookcase/getSystemBookmark?bookId=581966053'
+# resp2 = requests.get(url=url2, headers=header).json()
+# print(url2)
+
+
+# 获取章节id
+url2 = 'https://cmigucitic.cmread.com:8511/migu-cportal/book/bookread/getEBookDetailNew'
+
+body2 = {
+    "ebookId":f'{ebookId}'
+}
+resp2 = requests.post(url=url2, headers=header, data=json.dumps(body2)).json()
+chapterID = resp2['data']['chapterID']
+print(chapterID)
+
+# # 读书细节
+# url3 = 'https://cmigucitic.cmread.com:8511/v1/interaction-facade/bookRead/putReadBookInfo'
+# body3 = {
+#   "readList" : [
+#     {
+#       "startTime" : "20220823190346",
+#       "bookId" : f'{ebookId}',
+#       "endTime" : "20220823191014",
+#       "type" : "1"
+#     },
+#     {
+#       "startTime" : "20220823185747",
+#       "bookId" : f'{ebookId}',
+#       "endTime" : "20220823185854",
+#       "type" : "1"
+#     },
+#     {
+#       "startTime" : "20220823185854",
+#       "bookId" : f'{ebookId}',
+#       "endTime" : "20220823190346",
+#       "type" : "1"
+#     }
+#   ]
+# }
+# resp3 = requests.post(url=url3, headers=header, data=json.dumps(body3)).json()
+# print(resp3)
+
+url4 = 'https://cmigucitic.cmread.com:8511/migu-cportal/book/bookcase/addSystemBookmark'
+body4 = {
+    {
+        "ebookId" : f"{ebookId}",
+        "chapterId" : f"{chapterId}",
+        "offset" : "609"
+    },
+    {
+        "ebookId" : f"{ebookId}",
+        "chapterId" : f"{chapterId}",
+        "offset" : "0"
+    },
+    {
+        "ebookId" : "591066163",
+        "chapterId" : "591066178",
+        "offset" : "601"
+    },
+}
+resp4 = requests.post(url=url4, headers=header, data=json.dumps(body4)).json()
+print(resp4)
+
+# url5 = 'https://cmigucitic.cmread.com:8511/migu-cportal/book/bookcase/addSystemBookmark'
+# body5 = {
+#     "ebookId":f'{lst}'
+# }
+# resp5 = requests.post(url=url5, headers=header, data=json.dumps(body5)).json()
+# print(resp5)
