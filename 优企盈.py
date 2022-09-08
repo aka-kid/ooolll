@@ -23,16 +23,16 @@ from random import choice
 # 登录任务
 def login():
     global token, header, User_Agent, ua
-    # 填写自己的token,User-Agent,ua
-    token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxOTY0NiIsImlhdCI6MTY1OTMyNzk1MCwiZXhwIjoxNjYxOTE5OTUwfQ.EvuJKrbjU1Zgq4Dr3MIVZ5el1YNusgHM3Q1fbTxZb8E'
-    User_Agent = "shapedPolicy/2.4.5 (iPhone; iOS 14.8.1; Scale/3.00)"
-    ua = "Mozilla/5.0 (iPhone; CPU iPhone OS 14_8_1 like Mac OS X) AppleWebKit/611.4.2.0.3 (KHTML, like Gecko) Mobile/18H107"
+    # 填写自己的token,User-Agent,ua,clientId
+    token = 'XXX'
+    User_Agent = "XXX"
+    ua = "XXX"
+    clientId = "XXX"
     url = 'https://api.yqypt.com/v2/app/info'
     header = {
         'Host': 'api.yqypt.com',
         # 填写自己的clientId
-        'clientId': 'ed18359b98454ea8aefbe5948a174d32', 
-        # 填写自己的UA
+        'clientId': f'{clientId}', 
         'User-Agent': f'{User_Agent}',
         'token': f'{token}'
     }
@@ -98,7 +98,7 @@ def use():
 def word():
     global word1, word2
     # 天行api的key
-    key = '1db4a5affbd4487a92c1f6ec399410fa'
+    key = 'XXX'
     word_url1 = f'http://api.tianapi.com/zmsc/index?key={key}'  # 最美宋词
     word_url2 = f'http://api.tianapi.com/lzmy/index?key={key}'  # 励志古言
     header = {
@@ -164,11 +164,8 @@ def user_info():
     user_resp = requests.get(url=user_url, headers=header).json()
     nickname = user_resp['data']['nickname']     # 账户名称
     print('\n账户：' + str(nickname) + '，账户积分：' + str(user_integralNum))
-    # # 发送结果至tg bot
-    # send_url = f'https://dianbao.vercel.app/send/3AD32DBFDDD71\/' + '优企莹账户：' + str(nickname) + '，积分：' + str(user_integralNum)
-    # requests.get(send_url)
     # pushplus推送
-    token_pushplus = '3b160e2b7e3c462daeb2e7f344202da9' #在pushplus网站中可以找到
+    token_pushplus = 'XXX' #在pushplus网站中可以找到
     title= '账户：' + str(nickname) #改成你要的标题内容
     content = '账户积分：' + str(user_integralNum) #改成你要的正文内容
     send_url = 'http://www.pushplus.plus/send?token='+token_pushplus+'&title='+title+'&content='+content
@@ -217,11 +214,8 @@ def list():
             lst = str(prizeName) + f'，'+ str(integralNum) 
             lsts.append(lst)
             print(lst)
-    # # 发送结果至tg bot
-    # send_url = f'https://dianbao.vercel.app/send/3AD32DBFDDD71\/' + str(nickname) + '可兑换商品为：' + str(lsts)
-    # requests.get(send_url)
     # pushplus推送
-    token_pushplus = '3b160e2b7e3c462daeb2e7f344202da9' #在pushplus网站中可以找到
+    token_pushplus = 'XXX' #在pushplus网站中可以找到
     title= str(nickname) + '兑换商品列表' #改成你要的标题内容
     content = str(lsts) #改成你要的正文内容
     send_url = 'http://www.pushplus.plus/send?token='+token_pushplus+'&title='+title+'&content='+content
